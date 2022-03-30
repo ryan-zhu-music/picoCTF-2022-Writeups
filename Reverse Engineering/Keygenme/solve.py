@@ -2,7 +2,7 @@ from hashlib import md5
 
 flag = "picoCTF{br1ng_y0ur_0wn_k3y_"
 hash = md5(flag.encode()).hexdigest()
-print(hash)
+
 a = hash[12]
 b = hash[12 + 0x6c - 0x66]
 c = hash[12 + 0x6c - 0x66 + 0x66 - 0x5f]
