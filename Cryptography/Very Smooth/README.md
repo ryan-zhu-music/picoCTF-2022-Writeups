@@ -3,7 +3,8 @@
 ### Key points
 
 - RSA
-- Quadratics
+- Smooth numbers
+- Pollard p-1 algorithm
 
 ---
 
@@ -21,7 +22,7 @@
 
 > Forget safe primes... Here, we like to live life dangerously... >:)
 
-Upon reading `gen.py`, we find that `p` and `q` are generated such that `p - 1` and `q - 1` are _powersmooth_. `n` and `c` are provided in `output.txt`, as expected.
+Upon reading `gen.py`, we find that `p` and `q` are generated such that `p - 1` and `q - 1` are [_powersmooth_](https://en.wikipedia.org/wiki/Smooth_number). `n` and `c` are provided in `output.txt`, as expected.
 
 The hint suggests something to do with John Pollard.
 

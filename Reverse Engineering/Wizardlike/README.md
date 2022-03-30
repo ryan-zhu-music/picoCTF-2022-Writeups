@@ -100,7 +100,7 @@ Hmm. It looks like `cVar1`, the return value of `FUN_001015ac()` must not be 0 i
 }
 ```
 
-Aha! The important thing here is see that it checks if the next tile is `'#'` or `' '`. If that is true, then `0` is returned, and we will not be able to into that tile. Otherwise, `1` is returned.
+Aha! The important thing here that it is a simple `if` statement to check if the next tile is `'#'` or `' '`. If that is true, then `0` is returned, and we will not be able to move into that tile. Otherwise, `1` is returned.
 
 Since we want to be able to access the rest of the map, we want to be able to move across gaps and through walls. Time to patch!
 
@@ -155,7 +155,7 @@ The function we are looking for is `FUN_001015ac`, which appears to be `fcn.0000
 [0x000015b0]>
 ```
 
-Let's open in visual mode:
+Open visual mode:
 
 ```
 > V

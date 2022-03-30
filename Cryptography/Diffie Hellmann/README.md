@@ -32,11 +32,11 @@ Scrolling down, the article provides an example of how the algorithm works, with
 We are given:
 
 ```
-p = 13 # modulus
-g = 5 # base
+p = 13  # modulus
+g = 5   # base
 
-a = 7 # Alice's number
-b = 3 # Bob's number
+a = 7   # Alice's number
+b = 3   # Bob's number
 ```
 
 We can calculate the number Alice sends to Bob:
@@ -47,7 +47,7 @@ And use Bob's number to get the secret key:
 
 `secret = pow(A, b, p)`
 
-Which turns out to be `5`. Now the challenge instructs us to use Caesar Cipher on the encrypted message, shifting by the secret number.
+Which turns out to be `5`. Now the challenge instructs us to use Caesar Cipher on the encrypted message, shifting by the secret number. Make sure to try shifting forwards _and_ backwards.
 
 An important thing to note is instead of shifting just the alphabet, you have to include the 10 numerical digits, which are appended to the end of the alphabet. Underscores remain as underscores.
 

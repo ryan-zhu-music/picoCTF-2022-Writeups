@@ -116,14 +116,16 @@ This is strange, because all the other passwords appear to be base-58 encoding. 
 If you couldn't tell that it is rot-13, you can either brute-force the substitution, or if you looked closer at the usernames file, you will find a hint:
 
 ```
+...
 202     shadesearly
 203     deeplyparty
 204     pico
 205     coursemuster
 206     adidasbib
+...
 ```
 
-The username `pico` appears in the file. It's corresponding password is `pICo7rYpiCoU51N6PicOr0t13`, which says "try using rot13".
+The username `pico` appears in the file. It's corresponding password is `pICo7rYpiCoU51N6PicOr0t13`, which says "try using rot13" in 1337.
 
 On a totally random note, username 165 is `picoiscool`, but its password is just another meaningless base58 password.
 
@@ -143,36 +145,35 @@ Anyways, simply use rot13 to decrypt the flag.
 
 ## Solution
 
-You can use an [online decoder](https://databorder.com/transfer/morse-sound-receiver/) that allows you to upload a file for decrypting. Unfortunately, the online decoders may not be consistent with their outputs.
+You can use an [online decoder](https://databorder.com/transfer/morse-sound-receiver/) that allows you to upload a file for decrypting. Unfortunately, the online decoders may not be consistent or accurate with their outputs.
 
 I wrote a script to translate the bytes of the file to morse code then to text.
 (Scipy's Wavfile had some trouble reading the file, so I did it manually)
 
 ```
 MORSE = { 'a':'.-', 'b':'-...', 'c':'-.-.', 'd':'-..', 'e':'.', 'f':'..-.', 'g':'--.', 'h':'....', 'i':'..', 'j':'.---', 'k':'-.-', 'l':'.-..', 'm':'--', 'n':'-.', 'o':'---', 'p':'.--.', 'q':'--.-', 'r':'.-.', 's':'...', 't':'-', 'u':'..-', 'v':'...-', 'w':'.--', 'x':'-..-', 'y':'-.--', 'z':'--..', '1':'.----', '2':'..---', '3':'...--', '4':'....-', '5':'.....', '6':'-....', '7':'--...', '8':'---..', '9':'----.', '0':'-----'}
+FLAG = "picoCTF{"
 
-    FLAG = "picoCTF{"
+file = open("morse_chal.wav", "rb").read()
+file = file.split(b"\x00"*60000)
+for word in file:
+    word = word.split(b"\x00"*30000)
+    for letter in word:
+        letter = letter.split(b"\x00"*6000)
+        coded = ''
+        for beep in letter:
+            if 5000 < len(beep) < 18000:
+                coded += '.'
+            elif len(beep) > 23000:
+                coded += "-"
+        letter = list(MORSE.keys())[list(MORSE
+            .values()).index(coded)]
+        FLAG += letter
+    FLAG += "_"
 
-    file = open("morse_chal.wav", "rb").read()
-    file = file.split(b"\x00"*60000)
-    for word in file:
-        word = word.split(b"\x00"*30000)
-        for letter in word:
-            letter = letter.split(b"\x00"*6000)
-            coded = ''
-            for beep in letter:
-                if 5000 < len(beep) < 18000:
-                    coded += '.'
-                elif len(beep) > 23000:
-                    coded += "-"
-            letter = list(MORSE.keys())[list(MORSE
-                .values()).index(coded)]
-            FLAG += letter
-        FLAG += "_"
+FLAG = FLAG[:-1] + "}"
 
-    FLAG = FLAG[:-1] + "}"
-
-    print("Flag:", FLAG)
+print("Flag:", FLAG)
 ```
 
 ## Flag

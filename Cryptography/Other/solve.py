@@ -147,10 +147,10 @@ def vigenere():
     print("Flag:", FLAG)
 
 if __name__ == "__main__":
-    #basic_mod1()
-    #basic_mod2()
-    #credstuff()
-    #morse_code()
-    #rail_fence()
-    #transposition_trial()
+    basic_mod1()
+    basic_mod2()
+    credstuff()
+    morse_code()
+    rail_fence()
+    transposition_trial()
     vigenere()

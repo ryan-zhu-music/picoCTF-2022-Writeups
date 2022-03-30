@@ -3,9 +3,9 @@
 ### Key points
 
 - Diffie-Hellman
-- Smooth Numbers
-- Pohlig-Hellman Algorithm
-- Modular Exponentiation
+- Smooth numbers
+- Pohlig-Hellman algorithm
+- Modular exponentiation
 
 ---
 
