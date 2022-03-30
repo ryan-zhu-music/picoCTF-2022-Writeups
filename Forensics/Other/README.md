@@ -21,7 +21,7 @@ The file is an SVG file, which is under the XML family of files, which means it 
 
 ## Flag
 
-> !`picoCTF{3nh4nc3d_d0a757bf}`
+> `picoCTF{3nh4nc3d_d0a757bf}`
 
 ---
 
@@ -71,7 +71,7 @@ This is the annoying part. The rest of this solution involves unzipping the file
 
 ## Flag
 
-> !`picoCTF{f1len@m3_m@n1pul@t10n_f0r_0b2cur17y_950c4fee}`
+> `picoCTF{f1len@m3_m@n1pul@t10n_f0r_0b2cur17y_950c4fee}`
 
 ---
 
@@ -81,7 +81,7 @@ This is the annoying part. The rest of this solution involves unzipping the file
 
 ## Solution
 
-We know the flag begins with!`picoCTF{`, so we can open the file and search for that:
+We know the flag begins with`picoCTF{`, so we can open the file and search for that:
 
 ```
 $ cat anthem.flag.txt | grep "pico"
@@ -91,7 +91,7 @@ $ cat anthem.flag.txt | grep "pico"
 
 ## Flag
 
-> !`picoCTF{gr3p_15_@w3s0m3_2116b979}`
+> `picoCTF{gr3p_15_@w3s0m3_2116b979}`
 
 ---
 
@@ -105,7 +105,7 @@ Open the packet capture in Wireshark. We see that there is just 1 TCP stream. Ri
 
 ## Flag
 
-> !`picoCTF{p4ck37_5h4rk_01b0a0d6}`
+> `picoCTF{p4ck37_5h4rk_01b0a0d6}`
 
 ---
 
@@ -120,7 +120,7 @@ Open the PDF in a PDF viewer/editor. Try highlighting and copy/pasting the redac
 
 ## Flag
 
-> !`picoCTF{C4n_Y0u_S33_m3_fully}`
+> `picoCTF{C4n_Y0u_S33_m3_fully}`
 
 ---
 
@@ -159,4 +159,4 @@ picoCTF{mm15_f7w!}
 
 ## Flag
 
-> !`picoCTF{mm15_f7w!}`
+> `picoCTF{mm15_f7w!}`

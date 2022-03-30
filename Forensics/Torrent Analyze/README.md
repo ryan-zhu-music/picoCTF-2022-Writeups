@@ -32,7 +32,7 @@ The [article](https://www.techworm.net/2017/03/seeds-peers-leechers-torrents-lan
 Open the packet capture in WireShark.
 Make sure the BT-DHT protocol is enabled: Analyze > Enabled Protocols > BT-DHT
 
-If you look around in the packets, you will find packet 332 contains a download from a movie. While this is not important, it does give us a clue for what we are looking for. If you search up the `info_hash` parameter, you will find a Pirate site with the movie in the packet. **DO NOT VISIT THE PIRATE SITE!**
+If you look around in the packets, you will find packet 332 contains a movie download. While this is not important, it does give us a clue for what we are looking for. If you search up the `info_hash` parameter, you will find a Pirate site with the movie in the packet. **DO NOT VISIT THE PIRATE SITE!**
 
 The author of the challenge wouldn't include a pirate site as part of the solution.
 
@@ -44,7 +44,7 @@ bt-dht.bencoded.string == "info_hash"
 
 Sure enough, there are more. Looking each of them up, one of them is in fact a `.iso` file, as the hint suggests.
 
-The hash: `e2467cbf021192c241367b892230dc1e05c0580e`
+The hash: [`e2467cbf021192c241367b892230dc1e05c0580e`](https://linuxtracker.org/index.php?page=torrent-details&id=e2467cbf021192c241367b892230dc1e05c0580e)
 
 ---
 

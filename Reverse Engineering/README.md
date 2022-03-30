@@ -4,7 +4,7 @@
 
 ---
 
-The reverse engineering challenges this year were relatively easy compared to past years. For some reason, I was unable to get Ghidra to work for last year (unfortunately). A few months ago I decided to try again and it just magically started working. Thanks to that, I was able to solve all of the reverse engineering challenges this year!
+The reverse engineering challenges this year were relatively easy compared to past years. For some reason, I was unable to get Ghidra to work for last year (unfortunately). A few months ago I decided to try again and it just magically started working (?). Thanks to that, I was able to solve all of the reverse engineering challenges this year.
 
 ## Challenges
 
