@@ -22,7 +22,7 @@
 
 Let's try running the binary.
 
-```sh
+```console
 $ ./bbbbloat
 What's my favourite number? 7
 Sorry, that's not it!
