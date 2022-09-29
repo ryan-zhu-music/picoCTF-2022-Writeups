@@ -27,14 +27,14 @@
 
 Get the disk image and extract it:
 
-```sh
+```console
 $ wget https://artifacts.picoctf.net/c/238/disk.flag.img.gz
 $ gunzip disk.flag.img.gz
 ```
 
 Let's see what's inside:
 
-```sh
+```console
 $ fdisk -l disk.flag.img
 Disk disk.flag.img: 400 MiB, 419430400 bytes, 819200 sectors
 Units: sectors of 1 * 512 = 512 bytes
@@ -51,7 +51,7 @@ disk.flag.img3      411648 819199  407552  199M 83 Linux
 
 The first partition is a boot directory, which is probably not what we want. Mounting the second partition raises an error. Let's mount the third one. Each sector size is 512 bytes, so the offset will be 512 \* 411648 = 210763776.
 
-```sh
+```console
 $ sudo mount -o loop,offset=210763776 disk.flag.img ./mnt
 $ cd mnt
 $ ls -l
@@ -80,7 +80,7 @@ drwxr-xr-x 11 root root  1024 Oct  6 18:30 var
 
 `/root` was the last modified folder, so let's check in there. First, we need permissions:
 
-```sh
+```console
 $ sudo chmod 777 root
 $ cd root
 $ ls
@@ -89,7 +89,7 @@ flag.txt.enc
 
 Hmm...that's it? Let's see if there are any hidden files:
 
-```sh
+```console
 $ ls -al
 total 4
 drwxrwxr-x  2 root root 1024 Oct  6 18:32 .
@@ -100,7 +100,7 @@ drwxr-xr-x 22 root root 1024 Oct  6 18:30 ..
 
 There is a `.ash_history` file, which contains the history of shell commands. Let's see what the user did. Again, we need permissions first.
 
-```sh
+```console
 $ sudo chmod 664 .ash_history
 $ cat .ash_history
 touch flag.txt
@@ -118,7 +118,7 @@ halt
 
 So they took a file `flag.txt`, encrypted it with `openssl aes256` with a password, and put the output in `flag.txt.enc`, the file we have right now. All we have to do is decrypt it:
 
-```sh
+```console
 $ openssl aes256 -d -in flag.txt.enc -out flag.txt
 enter aes-256-cbc decryption password: unbreakablepassword1234567
 $ cat flag.txt

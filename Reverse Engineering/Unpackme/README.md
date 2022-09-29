@@ -25,7 +25,7 @@ We are given a binary. The hint asks - "What is UPX?"
 
 Let's try running the binary.
 
-```sh
+```console
 $ ./unpackme-upx
 What's my favourite number? 7
 Sorry, that's not it!
@@ -47,7 +47,7 @@ UPX is a tool that is used to compress executable files.
 
 Let's verify that this file was compressed with UPX:
 
-```sh
+```console
 $ strings unpackme-upx | grep "UPX"
 UPX!@
 $Info: This file is packed with the UPX executable packer http://upx.sf.net $
@@ -59,7 +59,7 @@ UPX!
 
 Definitely so. Let's try to unpack it then:
 
-```sh
+```console
 $ upx -d unpackme-upx
                        Ultimate Packer for eXecutables
                           Copyright (C) 1996 - 2018

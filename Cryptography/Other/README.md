@@ -350,7 +350,7 @@ for i in range(0, len(MESSAGE), 3):
 print(FLAG)
 ```
 
-```ps1
+```console
 $ python3 solve.py
 The flag is picoCTF{7R4N5P051N6_15_3XP3N51V3_A9AFB178}
 ```

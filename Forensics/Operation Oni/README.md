@@ -28,14 +28,14 @@
 
 Get the disk image and extract it:
 
-```sh
+```console
 $ wget https://artifacts.picoctf.net/c/378/disk.img.gz
 $ gunzip disk.img.gz
 ```
 
 Let's see what's inside:
 
-```sh
+```console
 $ fdisk -l disk.img
 Disk disk.img: 230 MiB, 241172480 bytes, 471040 sectors
 Units: sectors of 1 * 512 = 512 bytes
@@ -51,7 +51,7 @@ disk.img2       206848 471039  264192  129M 83 Linux
 
 The first partition is a boot directory, which is probably not what we want. Let's mount the second one. The offset is 512 \* 206848 = 105906176.
 
-```sh
+```console
 $ sudo mount -o loop,offset=105906176 disk.img ./mnt
 $ cd mnt
 $ ls -l
@@ -79,7 +79,7 @@ drwxr-xr-x 11 root root  1024 Oct  6 14:29 var
 
 `/root` was the last modified folder, so let's check in there. First, we need permissions:
 
-```sh
+```console
 $ sudo chmod 777 root
 $ cd root
 $ ls
@@ -88,7 +88,7 @@ $ ls
 
 ...nothing? Surely there must be hidden files then:
 
-```sh
+```console
 $ ls -al
 total 4
 drwxrwxrwx  3 root root 1024 Oct  6 14:30 .
@@ -99,7 +99,7 @@ drwx------  2 root root 1024 Oct  6 14:30 .ssh
 
 There is a hidden `.ash_history` file, which contains the history of shell commands. There is also a hidden folder, `.ssh`. Let's see what the user did. Again, we need permissions first.
 
-```sh
+```console
 $ sudo chmod 664 .ash_history
 $ cat .ash_history
 ssh-keygen -t ed25519
@@ -109,7 +109,7 @@ halt
 
 The generated a key using `ssh-keygen`, then went into the `.ssh/` folder and listed the files in there. Let's see what's in `.ssh/`:
 
-```sh
+```console
 $ sudo chmod 777 .ssh
 $ cd .ssh
 $ ls -l
@@ -120,7 +120,7 @@ total 2
 
 There are two files, a private key and a public key.
 
-```sh
+```console
 $ cat id_ed25519
 -----BEGIN OPENSSH PRIVATE KEY-----
 b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
@@ -135,7 +135,7 @@ ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGCtd7hso2E7OQItY6aTjMMyKZb1FVmeBfnVjyHcGYos
 
 Let's send the private key to the remote machine:
 
-```sh
+```console
 $ ssh -i id_ed25519 -p 54341 ctf-player@saturn.picoctf.net
 Welcome to Ubuntu 20.04.3 LTS (GNU/Linux 5.13.0-1017-aws x86_64)
 

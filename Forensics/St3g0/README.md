@@ -26,14 +26,14 @@ Steganography is usually pretty fun. You never really know what to expect, so yo
 
 First, open it of course. This one is a simple picture of the picoCTF logo. Nothing hidden visually. Now, the commands:
 
-```sh
+```console
 $ file pico.flag.png
 pico.flag.png: PNG image data, 585 x 172, 8-bit/color RGBA, non-interlaced
 ```
 
 Just a regular PNG image.
 
-```sh
+```console
 $ exiftool pico.flag.png
 ExifTool Version Number         : 11.88
 File Name                       : pico.flag.png
@@ -59,7 +59,7 @@ Megapixels                      : 0.101
 
 Nothing suspicious here.
 
-```sh
+```console
 $ strings pico.flag.img
 IHDR
 4JIDATx
@@ -77,7 +77,7 @@ K^4r
 
 A whole lot of garbage.
 
-```sh
+```console
 $ binwalk pico.flag.png
 
 DECIMAL       HEXADECIMAL     DESCRIPTION
@@ -88,7 +88,7 @@ DECIMAL       HEXADECIMAL     DESCRIPTION
 
 You may think "hey, there's a compressed file in there!" Actually, all PNG files have Zlib compressed data in them. Let's keep looking:
 
-```sh
+```console
 $ zsteg pico.flag.png
 b1,r,lsb,xy         .. text: "~__B>VG?G@"
 b1,g,lsb,xy         .. file: dBase III DBT, version number 0, next free block index 3549684369

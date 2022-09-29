@@ -33,14 +33,14 @@ The file is an SVG file, which is under the XML family of files, which means it 
 
 Trying to open the PDF in a PDF reader, you find it is clearly messed up in some way. In fact, it is not even a PDF file:
 
-```sh
+```console
 $ file Flag.pdf
 Flag.pdf: shell archive text
 ```
 
 It's a shell script! Let's run it:
 
-```sh
+```console
 $ mv Flag.pdf Flag.sh
 $ sh Flag.sh
 x - created lock directory _sh00046.
@@ -55,7 +55,7 @@ This part got a lot of participants frustrated or confused, as they were not sur
 
 It turns out that it needs to be [installed with the sharutils package](https://askubuntu.com/questions/232440/how-do-i-install-uudecode).
 
-```sh
+```console
 $ sudo apt-get install sharutils
 $ sh Flag.sh
 x - created lock directory _sh00046.
@@ -83,7 +83,7 @@ This is the annoying part. The rest of this solution involves unzipping the file
 
 We know the flag begins with`picoCTF{`, so we can open the file and search for that:
 
-```sh
+```console
 $ cat anthem.flag.txt | grep "pico"
       we think that the men of picoCTF{gr3p_15_@w3s0m3_2116b979}
 
@@ -132,7 +132,7 @@ Open the PDF in a PDF viewer/editor. Try highlighting and copy/pasting the redac
 
 Do exactly as the description instructs.
 
-```sh
+```console
 $ wget https://artifacts.picoctf.net/c/114/disk.img.gz
 $ gunzip disk.img.gz
 $ mmls disk.img
@@ -148,7 +148,7 @@ Units are in 512-byte sectors
 
 The length is 202752. Let's send it to the checker:
 
-```sh
+```console
 $ nc saturn.picoctf.net 52279
 What is the size of the Linux partition in the given disk image?
 Length in sectors: 202752

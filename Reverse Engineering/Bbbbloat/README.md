@@ -81,7 +81,7 @@ if (local_48 == 0x86187) {
 
 `0x86187` is the hexadecimal representation of 549255.
 
-```sh
+```console
 $ ./bbbbloat
 What's my favorite number? 549255
 picoCTF{cu7_7h3_bl047_44f74a60}

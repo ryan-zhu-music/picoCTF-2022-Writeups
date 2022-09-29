@@ -110,14 +110,14 @@ Since we want to be able to access the rest of the map, we want to be able to mo
 
 Run Radare2 with write privileges:
 
-```sh
+```console
 $ r2 -w ./game
 [0x00001140]>
 ```
 
 Analyze:
 
-```sh
+```console
 > aaaa
 [Cannot find function at 0x00001140 sym. and entry0 (aa)
 [x] Analyze all flags starting with sym. and entry0 (aa)
@@ -134,7 +134,7 @@ Analyze:
 
 Show functions:
 
-```sh
+```console
 > afl
 0x00001170    4 41   -> 34   fcn.00001170
 0x0000122d    7 100          fcn.0000122d
@@ -150,14 +150,14 @@ Show functions:
 
 The function we are looking for is `FUN_001015ac`, which appears to be `fcn.000015b0` here. Let's seek it:
 
-```sh
+```console
 > s fcn.000015b0
 [0x000015b0]>
 ```
 
 Open visual mode:
 
-```sh
+```console
 > V
 ```
 
@@ -165,13 +165,13 @@ Press `p` to switch over to dissasembly view.
 
 There are two lines we are interested in:
 
-```sh
+```console
 0x00001618      3c23        cmp al, 0x23
 ```
 
 and...
 
-```sh
+```console
 0x00001652      3c20        cmp al, 0x20
 ```
 
@@ -181,7 +181,7 @@ Scroll down until `0x00001618` is lined up to the top of the screen (the yellow 
 
 Type:
 
-```sh
+```console
 > cmp al, 0x3f
 ```
 

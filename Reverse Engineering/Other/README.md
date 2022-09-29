@@ -23,7 +23,7 @@
 
 Run the file.
 
-```sh
+```console
 $ wget https://artifacts.picoctf.net/c/310/run
 $ chmod +x run
 $ ./run
@@ -44,7 +44,7 @@ The flag is: picoCTF{U51N6_Y0Ur_F1r57_F113_47cf2b7b}
 
 Run the file with the argument.
 
-```sh
+```console
 $ wget https://artifacts.picoctf.net/c/353/run
 $ chmod +x run
 $ ./run Hello!
@@ -74,7 +74,7 @@ This challenges teaches the basics of debugging with gdb, including setting brea
 
 Follow the instructions. I omitted the `layout asm` command, which just changes the display format. It does not make a difference in the actual debugging. (Note: I am using `gef`, a set of tools on top of `gdb`.)
 
-```sh
+```console
 $ wget https://artifacts.picoctf.net/c/117/gdbme
 $ gdb gdbme
 gef> break *(main+99)
@@ -100,7 +100,7 @@ $
 
 Get the files:
 
-```sh
+```console
 $ wget https://artifacts.picoctf.net/c/388/patchme.flag.py
 $ wget https://artifacts.picoctf.net/c/388/flag.txt.enc
 ```
@@ -121,7 +121,7 @@ if( user_pw == "ak98" + \
 
 The script checks if our input is equal to the password. We could either copy the password and input that, or as the challenge suggests, patch the script. Let's change it so instead of checking if `user_pw` is _equal_ to the password, check if it is _not equal_ by replacing the `==` with `!=`. Save, and run the script.
 
-```sh
+```console
 $ python3 patchme.flag.py
 Please enter correct password for flag: pass
 Welcome back... your flag, user:
@@ -141,7 +141,7 @@ picoCTF{p47ch1ng_l1f3_h4ck_21d62e33}
 
 ## Solution
 
-```sh
+```console
 $ wget https://artifacts.picoctf.net/c/463/SafeOpener.java
 ```
 
@@ -215,7 +215,7 @@ It works!
 
 Download the file, and run it.
 
-```sh
+```console
 $ wget https://artifacts.picoctf.net/c/466/unpackme.flag.py
 $ python3 unpackme.flag.py
 What's the password? password
@@ -303,7 +303,7 @@ def arg133(arg432):
     return True
 ```
 
-```sh
+```console
 $ python3 bloat.flag.py
 Please enter correct password for flag: password
 Welcome back... your flag, user:

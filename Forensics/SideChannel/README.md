@@ -22,7 +22,7 @@
 
 Let's run the binary:
 
-```sh
+```console
 $ ./pin_checker
 Please enter your 8-digit PIN code:
 12345678
@@ -31,7 +31,7 @@ Checking PIN...
 Access denied.
 ```
 
-```sh
+```console
 $ ./pin_checker
 Please enter your 8-digit PIN code:
 5
@@ -146,7 +146,7 @@ if __name__ == "__main__":
 
 Let's run it:
 
-```sh
+```console
 $ python3 solve.py
 [+] Beginning timing attack. To improve timing accuracy, close background processes and do not change windows.
 [+] 1 digits found: 4
