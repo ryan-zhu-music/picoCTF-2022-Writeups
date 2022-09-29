@@ -49,7 +49,7 @@ The solution is to implement the attack outlined in this section, using Pohlig-H
 
 At this point, I could attempt to write my own code using the paper. To save time, some further digging around on Google brought up Mr. Wong's [GitHub repo](https://github.com/mimoo/Diffie-Hellman_Backdoor), which contained details and scripts for backdooring Diffie-Hellmann (Thank you Mr. Wong!). The useful code for this challenge was in `/backdoor_generator/backdoor_generator_tests.sage`. I took the relevant part of the code, made some edits, and replaced the values with the challenge values. Upon running it, a key was extracted:
 
-```
+```py
 3620831041249707681837526614894534070355285598225483947704567590841907012699590416231948016710515187458091091333255758171595595641033083736309400409643928552525615771016574204069905126628091574921138579736452244193978524346401965227602432958121312546484970793941595446729171796239738120972142110982378127424943566648943536407620764596225821813291776832376735113844664973843090883837692356157669303472000289784070105578708851239130329196576851269845975332237349620983071050002827602934735173409535571381136533487551597603554084684495113710973324043031393001050506093082012789211193458995902872996580045690528376090380
 ```
 
@@ -63,7 +63,7 @@ If this key works, and the **real** flag works too, then that means there are mu
 
 I ran some small tests on `3^e % n == c`, where n is a product of two small primes (e.g. 5 and 7) and c is constant. I found that for different values of n, there would always exist an arithmetic sequence for possible values of e that yield the same c. For example with `n = 5 x 7 = 35`, values of `e` **12** apart would yield the same c.
 
-```
+```py
 pow(3, 2, 35) == 9
 pow(3, 14, 35) == 9
 pow(3, 26, 35) == 9

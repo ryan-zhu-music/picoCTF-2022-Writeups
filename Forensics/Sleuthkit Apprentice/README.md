@@ -29,14 +29,14 @@ The title suggests Sleuthkit, a disk drive forensics tool. You can use that to s
 
 Get the file and extract it:
 
-```
+```sh
 $ wget https://artifacts.picoctf.net/c/332/disk.flag.img.gz
 $ gunzip disk.flag.img.gz
 ```
 
 Check the details:
 
-```
+```sh
 $ fdisk -l disk.flag.img
 Disk disk.flag.img: 300 MiB, 314572800 bytes, 614400 sectors
 Units: sectors of 1 * 512 = 512 bytes
@@ -53,14 +53,13 @@ disk.flag.img3      360448 614399  253952  124M 83 Linux
 
 Mount the partition at the correct offset:
 
-```
-
+```sh
 $ sudo mount -o loop,offset=$((512 * 360448)) disk.flag.img ./mnt
 ```
 
 Look inside:
 
-```
+```sh
 $ cd mnt
 $ ls -l
 total 39
@@ -92,7 +91,7 @@ my_folder
 
 There is a folder...
 
-```
+```sh
 $ cd my_folder
 $ ls
 flag.uni.txt
@@ -100,7 +99,7 @@ flag.uni.txt
 
 Open the file:
 
-```
+```sh
 $ cat flag.uni.txt
 picoCTF{by73_5urf3r_2f22df38}
 ```

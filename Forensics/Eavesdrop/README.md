@@ -51,14 +51,14 @@ You're unbelievable
 
 Looks like one person is sending a file with an encrypted message to another person. They conveniently exposed the decrypt command:
 
-```
+```console
 $ openssl des3 -d -salt -in file.des3 -out file.txt -k supersecretpassword123
 ```
 
 Let's check port 9002. Apply the following filter:
 
-```
-tcp.port == 9002
+```ts
+tcp.port == 9002;
 ```
 
 Right-click and follow the TCP stream again.
@@ -81,7 +81,7 @@ Use a hex editor to insert these bytes and save it to `file.des3`.
 
 Now simply run the provided command and read the output file:
 
-```
+```sh
 $ openssl des3 -d -salt -in file.des3 -out file.txt -k supersecretpassword123
 *** WARNING : deprecated key derivation used.
 Using -iter or -pbkdf2 would be better.

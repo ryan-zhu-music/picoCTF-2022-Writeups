@@ -38,8 +38,8 @@ The author of the challenge wouldn't include a pirate site as part of the soluti
 
 Let's see if there are any other `info_hash`es for us to find. Apply the filter:
 
-```
-bt-dht.bencoded.string == "info_hash"
+```ts
+bt - dht.bencoded.string == "info_hash";
 ```
 
 Sure enough, there are more. Looking each of them up, one of them is in fact a `.iso` file, as the hint suggests.

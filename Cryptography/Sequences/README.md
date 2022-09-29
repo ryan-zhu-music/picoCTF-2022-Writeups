@@ -54,7 +54,7 @@ Below are the results between steps.
 
 **In matrix form**
 
-```
+```py
 | 21      301     -9549       55692 | | f(x - 1) |
 | 1       0       0           0     | | f(x - 2) |
 | 0       1       0           0     | | f(x - 3) |
@@ -63,7 +63,7 @@ Below are the results between steps.
 
 The diagonalized matrix is too big to type out, but you should end up with the closed form function below:
 
-```
+```py
 f(x) = (760 / 33) * pow(12, x) - (1727 / 68) * pow(13, x) + (253 / 76) * pow(17, x) + (403 / 10659) * pow(-21, x)
 ```
 

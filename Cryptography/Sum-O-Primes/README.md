@@ -31,38 +31,38 @@ This is elementary algebra. Two variables, two equations. Use the quadratic form
 
 Our system of equations:
 
-```
+```py
 x = p + q
 n = p * q
 ```
 
 Rearrange...
 
-```
+```py
 q = x - p
 ```
 
 Substitute...
 
-```
+```py
 n = p * (x - p)
 ```
 
 Expand...
 
-```
+```py
 n = p * x - pow(p, 2)
 ```
 
 Rearrange...
 
-```
+```py
 pow(p, 2) - x * p + n = 0
 ```
 
 Now we have the equation in standard quadratic form. To isolate for p, we can apply the quadratic formula and simplify:
 
-```
+```py
 p = (x + math.isqrt(pow(x, 2) - 4 * n)) // 2
 ```
 
@@ -70,7 +70,7 @@ p = (x + math.isqrt(pow(x, 2) - 4 * n)) // 2
 
 Solve for q:
 
-```
+```py
 q = n // q
 ```
 

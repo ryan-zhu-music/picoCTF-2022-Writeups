@@ -22,7 +22,7 @@
 
 Let's try running the binary.
 
-```
+```sh
 $ ./bbbbloat
 What's my favourite number? 7
 Sorry, that's not it!
@@ -36,7 +36,7 @@ The number is probably hardcoded in the program.
 
 Decompile the binary in Ghidra. `__libc_start_main` calls `FUN_00101307`.
 
-```
+```c
 undefined8 FUN_00101307(void)
 
 {
@@ -75,13 +75,13 @@ undefined8 FUN_00101307(void)
 
 We see our input is compared to `0x86187`:
 
-```
+```c
 if (local_48 == 0x86187) {
 ```
 
 `0x86187` is the hexadecimal representation of 549255.
 
-```
+```sh
 $ ./bbbbloat
 What's my favorite number? 549255
 picoCTF{cu7_7h3_bl047_44f74a60}

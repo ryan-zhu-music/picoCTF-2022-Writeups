@@ -25,7 +25,7 @@ We are given a binary. The hint asks - "What is UPX?"
 
 Let's try running the binary.
 
-```
+```sh
 $ ./unpackme-upx
 What's my favourite number? 7
 Sorry, that's not it!
@@ -47,7 +47,7 @@ UPX is a tool that is used to compress executable files.
 
 Let's verify that this file was compressed with UPX:
 
-```
+```sh
 $ strings unpackme-upx | grep "UPX"
 UPX!@
 $Info: This file is packed with the UPX executable packer http://upx.sf.net $
@@ -59,7 +59,7 @@ UPX!
 
 Definitely so. Let's try to unpack it then:
 
-```
+```sh
 $ upx -d unpackme-upx
                        Ultimate Packer for eXecutables
                           Copyright (C) 1996 - 2018
@@ -74,7 +74,7 @@ Unpacked 1 file.
 
 Let's open the unpacked file in Ghidra. The decompilation looks much more familiar now. The `main` function is located in the `m` folder.
 
-```
+```c
 undefined8 main(void)
 
 {
@@ -115,13 +115,13 @@ undefined8 main(void)
 
 This is the line we want:
 
-```
+```c
 if (iStack68 == 0xb83cb) {
 ```
 
 Our input is compared to `0xb83cb`, which is the hexadecimal representation of 754635.
 
-```
+```c
 $ ./unpackme-upx
 What's my favorite number? 754635
 picoCTF{up><_m3_f7w_5769b54e}

@@ -22,7 +22,7 @@
 
 Let's run the binary:
 
-```
+```sh
 $ ./pin_checker
 Please enter your 8-digit PIN code:
 12345678
@@ -31,7 +31,7 @@ Checking PIN...
 Access denied.
 ```
 
-```
+```sh
 $ ./pin_checker
 Please enter your 8-digit PIN code:
 5
@@ -65,7 +65,7 @@ In general, if a digit is correct, the runtime should be longer. Let's implement
 
 Our attack function starts a new process and sends our test key with the test digit, recording the time it takes for the program to return a result. We loop through 10 possible digits for each digits and compare the times. The digit with the longest running time should be the correct one. We repeat this for all 8 digits.
 
-```
+```py
 from pwn import *
 from time import time
 
@@ -90,7 +90,7 @@ def timing_attack():
 
 `check_digit()` returns the digit with the longest running time:
 
-```
+```py
 def check_digit(times):
     correct_digit = 0
     max = 0
@@ -103,7 +103,7 @@ def check_digit(times):
 
 `pad()` pads the right side of the key with 0s until the length is 8:
 
-```
+```py
 def pad(key):
     return key + (8 - len(key)) * "0"
 ```
@@ -112,7 +112,7 @@ Sometimes, the timing may be inaccurate due to background processes, resulting i
 
 To verify that our key is correct, we can run the binary again with our key. If it is correct, we will send it to the remote server to get our flag.
 
-```
+```py
 @context.quietfunc
 def verify_key(key):
     p = process("./pin_checker")
@@ -135,7 +135,7 @@ def verify_key(key):
 
 If the key is incorrect, we will loop and try the attack again, until we find the correct key.
 
-```
+```py
 if __name__ == "__main__":
     found = False
     while not found:
@@ -146,7 +146,7 @@ if __name__ == "__main__":
 
 Let's run it:
 
-```
+```sh
 $ python3 solve.py
 [+] Beginning timing attack. To improve timing accuracy, close background processes and do not change windows.
 [+] 1 digits found: 4

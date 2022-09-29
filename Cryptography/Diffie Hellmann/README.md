@@ -31,7 +31,7 @@ Scrolling down, the article provides an example of how the algorithm works, with
 
 We are given:
 
-```
+```py
 p = 13  # modulus
 g = 5   # base
 

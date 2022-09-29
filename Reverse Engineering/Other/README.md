@@ -23,7 +23,7 @@
 
 Run the file.
 
-```
+```sh
 $ wget https://artifacts.picoctf.net/c/310/run
 $ chmod +x run
 $ ./run
@@ -44,7 +44,7 @@ The flag is: picoCTF{U51N6_Y0Ur_F1r57_F113_47cf2b7b}
 
 Run the file with the argument.
 
-```
+```sh
 $ wget https://artifacts.picoctf.net/c/353/run
 $ chmod +x run
 $ ./run Hello!
@@ -74,7 +74,7 @@ This challenges teaches the basics of debugging with gdb, including setting brea
 
 Follow the instructions. I omitted the `layout asm` command, which just changes the display format. It does not make a difference in the actual debugging. (Note: I am using `gef`, a set of tools on top of `gdb`.)
 
-```
+```sh
 $ wget https://artifacts.picoctf.net/c/117/gdbme
 $ gdb gdbme
 gef> break *(main+99)
@@ -100,14 +100,14 @@ $
 
 Get the files:
 
-```
+```sh
 $ wget https://artifacts.picoctf.net/c/388/patchme.flag.py
 $ wget https://artifacts.picoctf.net/c/388/flag.txt.enc
 ```
 
 Let's look at the python script:
 
-```
+```py
 ...
 if( user_pw == "ak98" + \
                 "-=90" + \
@@ -121,7 +121,7 @@ if( user_pw == "ak98" + \
 
 The script checks if our input is equal to the password. We could either copy the password and input that, or as the challenge suggests, patch the script. Let's change it so instead of checking if `user_pw` is _equal_ to the password, check if it is _not equal_ by replacing the `==` with `!=`. Save, and run the script.
 
-```
+```sh
 $ python3 patchme.flag.py
 Please enter correct password for flag: pass
 Welcome back... your flag, user:
@@ -141,13 +141,13 @@ picoCTF{p47ch1ng_l1f3_h4ck_21d62e33}
 
 ## Solution
 
-```
+```sh
 $ wget https://artifacts.picoctf.net/c/463/SafeOpener.java
 ```
 
 We have a `java` file.
 
-```
+```java
 public static void main(String args[]) throws IOException {
     BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in));
     Base64.Encoder encoder = Base64.getEncoder();
@@ -177,7 +177,7 @@ public static void main(String args[]) throws IOException {
 
 We have 3 attempts to enter the correct key. Each time, it takes our input an encodes it with base-64, and compares it to the correct encoded key.
 
-```
+```java
 public static boolean openSafe(String password) {
     String encodedkey = "cGwzYXMzX2wzdF9tM18xbnQwX3RoM19zYWYz";
 
@@ -194,7 +194,7 @@ public static boolean openSafe(String password) {
 
 The encoded base-64 key is hardcoded into the `openSafe` method. It decodes into: `pl3as3_l3t_m3_1nt0_th3_saf3`. Let's enter that as the password:
 
-```
+```java
 $ java SafeOpener.java
 Enter password for the safe: pl3as3_l3t_m3_1nt0_th3_saf3
 cGwzYXMzX2wzdF9tM18xbnQwX3RoM19zYWYz
@@ -215,7 +215,7 @@ It works!
 
 Download the file, and run it.
 
-```
+```sh
 $ wget https://artifacts.picoctf.net/c/466/unpackme.flag.py
 $ python3 unpackme.flag.py
 What's the password? password
@@ -224,7 +224,7 @@ That password is incorrect.
 
 It asks for a password, which we do not know. Maybe it's in the source code?
 
-```
+```py
 import base64
 from cryptography.fernet import Fernet
 
@@ -243,7 +243,7 @@ What's going on is that they have stored a base-64 and Fernet encrypted script, 
 
 This script then _decodes_ the checker and calls `exec()` on it, thus executing the checker. Let's replace `exec(plain.decode())` with `print(plain.decode())` to see what the encrypted script is.
 
-```
+```py
 $ python3 unpackme.flag.py
 
 pw = input('What\'s the password? ')
@@ -258,7 +258,7 @@ else:
 
 > `picoCTF{175_chr157m45_85f5d0ac}`
 
-Get it? Because "unpackme"???
+As in "unpack" a gift!
 
 ---
 
@@ -270,7 +270,7 @@ Get it? Because "unpackme"???
 
 Get the files and run the program:
 
-```
+```py
 $ wget https://artifacts.picoctf.net/c/430/bloat.flag.py
 $ wget https://artifacts.picoctf.net/c/430/flag.txt.enc
 $ python3 bloat.flag.py
@@ -284,7 +284,7 @@ Let's open the source code and...wow, what a mess. The Python code is obfuscated
 
 At some point, the program must compare our input with the password. You will find this at the very top of the program:
 
-```
+```py
 def arg133(arg432):
     if arg432 == a[71]+a[64]+a[79]+a[79]+a[88]+a[66]+a[71]+a[64]+a[77]+a[66]+a[68]:
         return True
@@ -298,12 +298,12 @@ a[81]+a[68]+a[66]+a[83])
 
 If our input matches the password, `arg133()` returns `True`. Let's patch it to _always_ return `True`.
 
-```
+```py
 def arg133(arg432):
     return True
 ```
 
-```
+```sh
 $ python3 bloat.flag.py
 Please enter correct password for flag: password
 Welcome back... your flag, user:

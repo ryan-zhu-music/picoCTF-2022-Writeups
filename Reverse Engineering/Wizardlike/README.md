@@ -39,7 +39,7 @@ The hints suggest Ghidra and Radare2, and an interesting tip:
 
 This part checks our key input:
 
-```
+```c
 if (iVar5 == 0x51) {        // Q - quit game
     bVar1 = false;
 }
@@ -61,7 +61,7 @@ Nothing vulnerable here.
 
 Let's go into one of the move functions. When we press `w`, `FUN_0010166b();` is called.
 
-```
+```c
 void FUN_001016e7(void)
 
 {
@@ -80,7 +80,7 @@ void FUN_001016e7(void)
 
 Hmm. It looks like `cVar1`, the return value of `FUN_001015ac()` must not be 0 in order for us to move. `FUN_001015ac` checks the character in the direction we are trying to move, and it is in all the move functions. Let's take a closer look at `FUN_001015ac`.
 
-```
+```c
 {
   undefined8 uVar1;
 
@@ -110,14 +110,14 @@ Since we want to be able to access the rest of the map, we want to be able to mo
 
 Run Radare2 with write privileges:
 
-```
+```sh
 $ r2 -w ./game
 [0x00001140]>
 ```
 
 Analyze:
 
-```
+```sh
 > aaaa
 [Cannot find function at 0x00001140 sym. and entry0 (aa)
 [x] Analyze all flags starting with sym. and entry0 (aa)
@@ -134,7 +134,7 @@ Analyze:
 
 Show functions:
 
-```
+```sh
 > afl
 0x00001170    4 41   -> 34   fcn.00001170
 0x0000122d    7 100          fcn.0000122d
@@ -150,14 +150,14 @@ Show functions:
 
 The function we are looking for is `FUN_001015ac`, which appears to be `fcn.000015b0` here. Let's seek it:
 
-```
+```sh
 > s fcn.000015b0
 [0x000015b0]>
 ```
 
 Open visual mode:
 
-```
+```sh
 > V
 ```
 
@@ -165,13 +165,13 @@ Press `p` to switch over to dissasembly view.
 
 There are two lines we are interested in:
 
-```
+```sh
 0x00001618      3c23        cmp al, 0x23
 ```
 
 and...
 
-```
+```sh
 0x00001652      3c20        cmp al, 0x20
 ```
 
@@ -181,7 +181,7 @@ Scroll down until `0x00001618` is lined up to the top of the screen (the yellow 
 
 Type:
 
-```
+```sh
 > cmp al, 0x3f
 ```
 

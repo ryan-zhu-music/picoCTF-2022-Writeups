@@ -30,13 +30,13 @@
 
 The message:
 
-```
+```py
 91 322 57 124 40 406 272 147 239 285 353 272 77 110 296 262 299 323 255 337 150 102
 ```
 
 Just follow the instructions. Let's write a Python script to speed it up:
 
-```
+```py
 import string
 message = "91 322 57 124 40 406 272 147 239 285 353 272 77 110 296 262 299 323 255 337 150 102"
 alphabet = string.ascii_lowercase + string.digits + "_"
@@ -66,7 +66,7 @@ The modular inverse `B` of `A mod C` is the value of `B` such that `A * B mod C 
 
 Follow the instructions and write a script. One thing to be careful of here is that instead of the indexes going from 0-36 as in basic-mod1, the indexes go from 1 to 37 here. The modular inverse of `A mod C` can be calculated with `pow(A, -1, C)` in Python.
 
-```
+```py
 import string
 message = "104 290 356 313 262 337 354 229 146 297 118 373 221 359 338 321 288 79 214 277 131 190 377"
 alphabet = string.ascii_lowercase + string.digits + "_"
@@ -95,7 +95,7 @@ After downloading and decompressing the TAR file, we find two files, `usernames.
 
 Let's find the line `'cultiris'` appears at in the usernames file:
 
-```
+```r
 ...
 376     affectedruby
 377     femininebouquet
@@ -115,7 +115,7 @@ This is strange, because all the other passwords appear to be base-58 encoding. 
 
 If you couldn't tell that it is rot-13, you can either brute-force the substitution, or if you looked closer at the usernames file, you will find a hint:
 
-```
+```r
 ...
 202     shadesearly
 203     deeplyparty
@@ -150,7 +150,7 @@ You can use an [online decoder](https://databorder.com/transfer/morse-sound-rece
 I wrote a script to translate the bytes of the file to morse code then to text.
 (Scipy's Wavfile had some trouble reading the file, so I did it manually)
 
-```
+```py
 MORSE = { 'a':'.-', 'b':'-...', 'c':'-.-.', 'd':'-..', 'e':'.', 'f':'..-.', 'g':'--.', 'h':'....', 'i':'..', 'j':'.---', 'k':'-.-', 'l':'.-..', 'm':'--', 'n':'-.', 'o':'---', 'p':'.--.', 'q':'--.-', 'r':'.-.', 's':'...', 't':'-', 'u':'..-', 'v':'...-', 'w':'.--', 'x':'-..-', 'y':'-.--', 'z':'--..', '1':'.----', '2':'..---', '3':'...--', '4':'....-', '5':'.....', '6':'-....', '7':'--...', '8':'---..', '9':'----.', '0':'-----'}
 FLAG = "picoCTF{"
 
@@ -196,7 +196,7 @@ As with most easy cryptography challenges, an [online decoder](https://cryptii.c
 
 I took the challenge to script the decrypting process:
 
-```
+```py
 MESSAGE = "Ta _7N6DDDhlg:W3D_H3C31N__0D3ef sHR053F38N43D0F i33___NA"
 LEN = len(MESSAGE)
 RAILS = 4
@@ -340,7 +340,7 @@ heTfl g as iicpCTo{7F4NRP051N5_16_35P3X51N3_V9AAB1F8}7
 
 The first three letters clearly forms the word "The". So the general transposition is (third letter) + (first and second letter). Let's script it:
 
-```
+```py
 MESSAGE = "heTfl g as iicpCTo{7F4NRP051N5_16_35P3X51N3_V9AAB1F8}7"
 
 FLAG = ""
@@ -350,7 +350,7 @@ for i in range(0, len(MESSAGE), 3):
 print(FLAG)
 ```
 
-```
+```ps1
 $ python3 solve.py
 The flag is picoCTF{7R4N5P051N6_15_3XP3N51V3_A9AFB178}
 ```
@@ -375,11 +375,11 @@ Below is a script:
 
 Each character in the plaintext can be decrypted from the key and ciphertext characters algebraically:
 
-```
+```py
 M = C - K
 ```
 
-```
+```py
 import string
 
 MESSAGE = "rgnoDVD{O0NU_WQ3_G1G3O3T3_A1AH3S_2951c89f}"

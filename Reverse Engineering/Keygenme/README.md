@@ -31,7 +31,7 @@ Let's decompile the binary in Ghidra.
 
 Our main function is `FUN_0010148b`.
 
-```
+```c
 undefined8 FUN_0010148b(void)
 
 {
