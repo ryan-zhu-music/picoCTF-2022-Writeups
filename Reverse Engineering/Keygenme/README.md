@@ -64,9 +64,9 @@ The decompiled `FUN_00101209()` is in [`keygenme.c`](keygenme.c), with some comm
 
 `FUN_00101209()` generates a key (`acStack56`) and compares it to our input. If it matches, 1 is returned, which means our key was valid. So all we have to do is figure out how `acStack56` is generated.
 
-First, the MD5 hash of "picoCTF{br1ng*y0ur_0wn_k3y*" is generated and stored in `local_78`.
+First, the MD5 hash of "picoCTF{br1ng_y0ur_0wn_k3y*" is generated and stored in `local_78`.
 
-Then, "picoCTF{br1ng*y0ur_0wn_k3y*" is copied into the first 27 characters of `acStack56`.
+Then, "picoCTF{br1ng_y0ur_0wn_k3y*" is copied into the first 27 characters of `acStack56`.
 
 The next 8 characters are assigned the values of 5 different variables. Scrolling up in the program, it appears that 4 of them are undefined! `local_78[0]` is simply the first character in the MD5 hash generated earlier, which turns out to be `4`.
 
